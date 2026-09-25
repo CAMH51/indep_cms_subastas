@@ -4,7 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "concurrently  \"npm run build:css\" \"node --watch src/server.js \"",
+    "start": "node src/server.js",
+    "build:css": "postcss ./src/public/styles/input.css -o ./src/public/styles/output.css --watch"
   },
   "keywords": [],
   "author": "",
