@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%-include('./partials/head.ejs') %>
+</head>
+<body>
+     <%- include('./partials/navbar.ejs') %>
+
+     <div class="border border-2 border-gray-400 rounded-2xl shadow-md m-4 p-4 h-[calc(100vh-9rem)] flex flex-col">
+        <%- include('./pages/' + page ) %>
+     </div>
+
+
+    <%- include('./partials/footer.ejs') %>
+</body>
+</html>

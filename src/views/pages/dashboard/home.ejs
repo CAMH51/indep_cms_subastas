@@ -1,0 +1,19 @@
+<h2 class="text-6xl font-bold">Bienvenid@</h2>
+<h5 class="text-3xl font-semibold mb-6">CMS para subastas en linea.</h5>
+
+<h2 class="text-2xl font-bold mb-6">Librerias.</h2>
+
+<% if(entities.length === 0){%> 
+    <p>No existen librerias creadas <a href="/entities/new">Crear una libreria.</a></p>    
+<%}else{%>
+    <div class="grid sm:grid-cols-1 md:grid-cols-4 xl:grid-cols-3 gap-4">
+        <% entities.forEach(e => {%> 
+            <%- include('../../components/card.ejs',{
+                url:"/entities/"+ e.name,
+                titulo:e.name,
+                icono:"bi-window",
+                text_color:"text-black"
+            }) %>    
+        <%})%>
+    </div>
+<%}%>

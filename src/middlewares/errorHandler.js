@@ -1,5 +1,6 @@
 function manejadorNotFound(req, res){
-    res.status(404).render('error',{
+    res.status(404).render('dashboard',{
+        page:'error',
         titulo: 'Página no encontrada',
         mensaje: `La ruta ${req.originalUrl} no existe.`
     });

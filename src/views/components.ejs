@@ -1,0 +1,38 @@
+<%- include('../../components/input.ejs',{
+    label:"Nombre de la libreria (minúsculas, npumeros y guiones bajo( _ )):",
+    id:"name",
+    name:"name",
+    type:"text",
+    placeholder:"ej. sliders",
+    pattern:"[a-z][a-z0-9_]{0,49}",
+    required:true
+
+}) %>
+
+<%- include('../../components/select.ejs',{
+    label:"Tipo de dato:",
+    id:"tipo",
+    name:"tipo",
+    label_option:"Seleccione un tipo de dato",
+    data:[
+    {id_tipo:"string",name:"String"},
+    {id_tipo:"integer",name:"Integer"},
+    ],
+    id_data:"id_tipo",
+    name_data:"name"
+}) %>
+
+<%- include('../../components/checkbox.ejs',{
+    label:"Prueba de checkbox:",
+    id:"check1",
+    name: "check1",
+    value: ""
+}) %>
+
+<%- include('../../components/button.ejs',{
+    type:"button",
+    title:"Boton de agregar",
+    label:"Agregar",
+    id:"btn_1",
+    icon:"<i class='bi bi-plus-circle'></i>"
+}) %>
