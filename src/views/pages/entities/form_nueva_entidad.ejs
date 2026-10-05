@@ -34,6 +34,10 @@
                 bg_text:"text-[#ffffff]"
             }) %>
 
+            <button data-modal-target="default-modal" data-modal-toggle="default-modal" class="text-white bg-brand box-border border border-transparent hover:bg-brand-strong focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none" type="button">
+                Agregar campos
+            </button> 
+
             <%- include('../../components/button.ejs',{
                 type:"submit",
                 title:"Crear libreria",
@@ -54,6 +58,11 @@
 </form>
 
 
+    <%- include('../../components/modal.ejs',{
+        id:"default-modal",
+        title:"Agregar Campos",
+        body:"../pages/entities/form_modal_entities.ejs"
+    }) %>
 <template id="field_template">
     <div class="grid grid-cols-6 items-center gap-3 row">
         <%- include('../../components/input.ejs',{
