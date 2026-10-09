@@ -30,6 +30,7 @@ exports.createEntity = async(req, res) =>{
     const fields = Object.values(req.body.fields || {}).map((f) => ({
       name: (f.name || '').trim(),
       type: f.type,
+      label:f.label,
       length: f.length ? Number(f.length) : null,
       scale: f.scale ? Number(f.scale) : null,
       required: f.required === 'on',
@@ -86,6 +87,7 @@ exports.getEntities = async(req, res) =>{
 }
 
 exports.records =async(req, res) =>{
+    const entity = await entityService.getName(req.params.name);
     const model = registry.get(req.params.name);
     if(!model) return res.status(404).json({success:false,msg:'La entidad no existe'});
 
@@ -97,7 +99,7 @@ exports.records =async(req, res) =>{
         }
 
         const record = await model.create(data);
-        res.status(201).json({success:true,data:record})
+        res.redirect(`/entities/${entity.name}`);
     } catch (error) {
         res.status(400).json({error:error.message});
     }

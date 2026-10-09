@@ -1,0 +1,22 @@
+<table id="tabla<%= entity.name %>" class="text-center">
+    <thead>
+        <tr>
+            <% entity.fields.forEach(f => { %><th><%= f.label %></th><% }) %>
+        </tr>
+    </thead>
+    <tbody>
+       <% rows.forEach(r => { %>
+            <tr>
+                <% entity.fields.forEach(f => { %>
+                <td><%= r.get(f.name) === null ? '' : r.get(f.name) %></td>
+                <% }) %>
+            </tr>
+        <% }) %>
+    </tbody>
+</table>
+
+
+<script type="module" nonce="<%= nonce %>"> 
+    import {dataTable} from '/js/dataTable.js';
+    dataTable('tabla<%= entity.name %>');
+</script>

@@ -24,6 +24,10 @@ const Field = sequelize.define('Field',{
         type:DataTypes.STRING(50),
         allowNull:false
     },
+    label:{
+        type:DataTypes.STRING(200),
+        allowNull:false
+    },
     type:{
         type:DataTypes.STRING(20),
         allowNull:false

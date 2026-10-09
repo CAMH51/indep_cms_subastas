@@ -31,6 +31,7 @@ app.use(
                     'https://cdn.jsdelivr.net',
                     'https://code.jquery.com/jquery-4.0.0.min.js',
                     'https://cdn.datatables.net/2.3.7/js/dataTables.js',
+                    'https://unpkg.com/'
                 ],
                 fontSrc:["'self'",'https://cdn.jsdelivr.net', 'data:'],
                 imgSrc:["'self'",'data:'],

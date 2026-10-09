@@ -1,0 +1,56 @@
+ <form method="POST" action="/entities/<%= entity.name %>/records">
+    <% entity.fields.forEach(f => {%> 
+        <% if(f.type === 'string'){%>
+            <% if(f.length > 100){%>
+                <%- include('../../components/textarea.ejs',{
+                    label:f.label + ":",
+                    id:f.name,
+                    name:f.name,
+                    placeholder:"",
+                    required:f.required ? true : false
+                }) %> 
+            <%}else{%>
+                <%- include('../../components/input.ejs',{
+                    label:f.label + ":",
+                    id:f.name,
+                    name:f.name,
+                    type:"text",
+                    placeholder:"",
+                    required:f.required ? true : false
+                }) %>    
+            <%}%>
+        <%}%>
+
+        <% if(f.type === 'integer' || f.type === 'decimal' || f.type === 'bigint'){%>
+            <%- include('../../components/input.ejs',{
+                label:f.label + ":",
+                id:f.name,
+                name:f.name,
+                type:"number",
+                placeholder:"",
+                required:f.required ? true : false
+            }) %>    
+        <%}%>
+
+        <% if(f.type === 'boolean' ){%>
+            <%- include('../../components/checkbox.ejs',{
+                label:f.label + ":",
+                id:f.name,
+                name:f.name,
+                value:"1",
+                required:f.required ? true : false
+            }) %>
+        <%}%>
+    <%})%>
+
+    <%- include('../../components/button.ejs',{
+        type:"submit",
+        title:"Boton de agregar",
+        label:"Guardar",
+        id:"btn_agregar",
+        icon:"<i class='bi bi-floppy'></i>",
+        bg:"bg-[#9b2247]",
+        bg_hover:"hover:bg-[#611323]",
+        bg_text:"text-[#ffffff]"
+    }) %>
+</form>

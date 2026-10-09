@@ -1,19 +1,31 @@
 
-    <h3 class="text-2xl font-bold mb-4">Libreria: <%= entity.name %></h3>
+<%- include('../../components/breadcrumb.ejs',{
+    links:[
+        {url:"/entities/"+ entity.name, name:entity.name }
+    ]
+}) %>
 
-    <% if (error) { %><p class="error"><%= error %></p><% } %>
+<div class=" flex flex-row justify-between items-center rounded-lg p-2">
+    <h3 class="text-[#9b2247] text-2xl font-bold mb-4"><i class="bi bi-plus-circle"></i>  <%= ('Agregar '+ entity.name).toUpperCase() %></h3>
 
-    <form method="POST" action="/entities/<%= entity.name %>/records">
-        <% entity.fields.forEach(f => {%> 
-            <% if(f.type === 'string'){%>
-                <%- include('../../components/input.ejs',{
-                    label:f.name + ":",
-                    id:f.name,
-                    name:f.name,
-                    type:"text",
-                    placeholder:"",
-                    required:f.required ? true : false
-                }) %>    
-            <%}%>
-        <%})%>
-    </form>
+    <button data-modal-target="addRecordModal" data-modal-toggle="addRecordModal" class="text-white bg-[#1e5b4f] box-border border border-transparent hover:bg-[#002f2a] focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none" type="button">
+        <i class="bi bi-plus-circle"></i> Agregar <%= entity.name %>
+    </button> 
+    
+</div>
+<hr class="h-px my-4 bg-neutral-quaternary border-0">
+<% if (error) { %><p class="error"><%= error %></p><% } %>
+
+
+<%- include('../../components/modal.ejs',{
+    id: 'addRecordModal',
+    title: 'Agregar Registro',
+    icon: 'bi-plus-circle',
+    body: '../pages/records/form_add_record.ejs',
+    modalSize: 'max-w-xl'
+}) %>
+
+<%- include('./list_records.ejs'); %>
+
+
+   

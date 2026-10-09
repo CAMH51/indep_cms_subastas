@@ -1,34 +1,38 @@
 
+<div id="<%= id %>" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed inset-0 z-50 justify-center items-center w-full h-full">
+    <!-- Backdrop con blur -->
+    <div class="fixed inset-0 bg-neutral-900/40 backdrop-blur-sm transition-opacity" data-modal-hide="<%= id %>"></div>
 
-<!-- Modal toggle -->
-<!-- <button data-modal-target="<%= id %>" data-modal-toggle="<%= id %>" class="text-white bg-brand box-border border border-transparent hover:bg-brand-strong focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none" type="button">
-  Toggle modal
-</button> -->
-
-<!-- Main modal -->
-<div id="<%= id %>" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
-    <div class="relative p-4 w-full max-w-5xl max-h-full">
+    <div class="relative p-4 w-full <%= modalSize || 'max-w-5xl' %> max-h-full">
         <!-- Modal content -->
-        <div class="relative bg-neutral-primary-soft border border-default rounded-base shadow-sm p-4 md:p-6">
-            <!-- Modal header -->
-            <div class="flex items-center justify-between border-b border-default pb-4 md:pb-5">
-                <h3 class="text-lg font-medium text-heading">
-                    <%= title %>
+        <div class="relative bg-white/95 dark:bg-neutral-900/95 backdrop-blur-xl  dark:border-indigo-400/70 rounded-2xl shadow-2xl shadow-indigo-500/20 dark:shadow-indigo-500/10 p-5 md:p-7 transition-all duration-300 overflow-hidden">
+
+            <!-- Modal header centrado -->
+            <div class="flex flex-col items-center justify-center border-b border-[#a57f2c] dark:border-neutral-800/70 pb-4 md:pb-5 pt-2 relative">
+                <h3 class="text-lg md:text-xl font-semibold tracking-tight text-[#611323] dark:from-indigo-400 dark:via-violet-400 dark:to-fuchsia-400 text-center">
+                    <i class="bi <%= icon %> text-2xl"></i> <%= title.toUpperCase() %>
                 </h3>
-                <button type="button" class="text-body bg-transparent hover:bg-neutral-tertiary hover:text-heading rounded-base text-sm w-9 h-9 ms-auto inline-flex justify-center items-center" data-modal-hide="<%= id %>">
-                    <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18 17.94 6M18 18 6.06 6"/></svg>
+
+                <!-- Botón cerrar en esquina (posición absoluta para no romper el centrado) -->
+                <button 
+                    type="button" 
+                    class="group absolute right-0 top-0 text-neutral-500 dark:text-neutral-400 bg-transparent hover:bg-neutral-100 dark:hover:bg-neutral-800 hover:text-neutral-900 dark:hover:text-neutral-100 rounded-full text-sm w-9 h-9 inline-flex justify-center items-center transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500/50" 
+                    data-modal-hide="<%= id %>"
+                    aria-label="Close modal"
+                >
+                    <svg class="w-5 h-5 transition-transform duration-200 group-hover:rotate-90" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18 17.94 6M18 18 6.06 6"/>
+                    </svg>
                     <span class="sr-only">Close modal</span>
                 </button>
             </div>
+
             <!-- Modal body -->
-            <div class="space-y-4 md:space-y-6 py-4 md:py-6">
+            <div class="space-y-4 md:space-y-6 py-4 md:py-6 text-neutral-700 dark:text-neutral-300">
                 <%- include(body) %>
             </div>
-            <!-- Modal footer -->
-            <div class="flex items-center border-t border-default space-x-4 pt-4 md:pt-5">
-                <button data-modal-hide="default-modal" type="button" class="text-white bg-brand box-border border border-transparent hover:bg-brand-strong focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none">I accept</button>
-                <button data-modal-hide="default-modal" type="button" class="text-body bg-neutral-secondary-medium box-border border border-default-medium hover:bg-neutral-tertiary-medium hover:text-heading focus:ring-4 focus:ring-neutral-tertiary shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none">Decline</button>
-            </div>
+
         </div>
     </div>
 </div>
+
